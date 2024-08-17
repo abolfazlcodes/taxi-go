@@ -1,10 +1,17 @@
-import { UserButton } from "@clerk/nextjs";
+"use client";
+
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   return (
     <div>
       <UserButton afterSwitchSessionUrl="/" />
-      home page
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
     </div>
   );
 }
