@@ -1,13 +1,10 @@
-"use client";
-
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { Outfit } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+
+const outfit = Outfit({ subsets: ["latin"] });
+
 export default function RootLayout({
   children,
 }: {
@@ -16,13 +13,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+        <body className={`${outfit.className}`}>
+          <Navbar />
           {children}
         </body>
       </html>
